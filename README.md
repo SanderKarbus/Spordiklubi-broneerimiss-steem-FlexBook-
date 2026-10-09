@@ -46,3 +46,41 @@ Sprindi eesmärk on saavutada rakenduse miinimumfunktsionaalsus (MVP) ehk kasuta
 
 ### Projektihaldus
 Töid hallatakse visuaalsel tahvlil (nt GitHub Projects või Trello), kus koodi kirjutamise ajal liikuvad tööd veergude vahel: *To-Do* (Tegemata) -> *In Progress* (Tegemisel) -> *Testing* (Testimisel) -> *Done* (Tehtud).
+
+---
+
+## 3. CASE-vahendid
+
+Projekti kavandamiseks ja disainimiseks kasutatakse kahte tarkvaraarendust toetavat CASE-vahendit:
+1. **PlantUML / draw.io (Modelleerimise vahend):** Kasutatakse süsteemi tarkvaraarhitektuuri ja andmevoogude visuaalseks joonistamiseks koodi või plokkskeemide abil.
+2. **GitHub Projects (Projektihaldusvahend):** Kasutatakse kasutajalugude (backlogi) haldamiseks, prioriteetide seadmiseks ja sprindi arendustegevuste jälgimiseks.
+
+### CASE-vahendite võrdlus
+
+| Atribuut | PlantUML / draw.io | GitHub Projects |
+| :--- | :--- | :--- |
+| **Peamine eesmärk** | Süsteemi modelleerimine ja skeemide loomine. | Tööde planeerimine, haldus ja meeskonna koostöö. |
+| **Toetatavad tegevused** | Arhitektuuri disain, andmebaasi mudelite ja UML-skeemide joonistamine. | Kasutajalugude kaardistamine, sprindi planeerimine, ülesannete staatuse jälgimine. |
+| **Muudetavus** | Skeemid on reaalajas muudetavad tekstipõhise koodi või elementide lohistamise teel. | Ülesanded on lohistatavad tulpade vahel (Kanban tahvel). |
+
+---
+
+## 4. Tarkvaraarhitektuur
+
+### Rakenduse tüüp ja ülesehitus
+FlexBook on disainitud **veebirakendusena**, mis põhineb **kihilisel arhitektuuril** (Layered Architecture). See jagab süsteemi selgeteks vastutusaladeks, mis teeb selle hooldamise ja testimise lihtsaks.
+
+### Arhitektuuri komponendid ja andmevoog
+1. **Esitluskiht (Kasutajaliides / Front-end):** Veebibrauseris jooksev Reacti rakendus, mida klient näeb. Kui klient vajutab nuppu "Broneeri trenn", saadab esitluskiht HTTP-päringu rakendusserverile.
+2. **Äriloogika kiht (Back-end / Rakendusserver):** Node.js/Express server.
+   * **Controller:** Võtab päringu vastu ja suunab selle edasi.
+   * **Service:** Kontrollib äriloogikat (nt kas saalis on veel vabu kohti ja kas kasutajal on kehtiv pääse).
+3. **Andmepääsu kiht (Repository):** Suhtleb otse andmebaasiga ja käivitab SQL-päringuid.
+4. **Andmebaasikiht:** PostgreSQL relatsiooniline andmebaas, kus hoitakse tabeleid `Kasutajad`, `Treeningud` ja `Broneeringud`.
+
+### Valitud arhitektuuri eelised ja puudused võrreldes Monoliidiga
+
+| Arhitektuur | Eelised | Puudused |
+| :--- | :--- | :--- |
+| **Kihiline arhitektuur (Valitud)** | Selge komponentide eraldatus; ühte kihti (nt andmebaasi) saab muuta ilma esiosa lõhkumata; lihtne testida. | Andmed peavad läbima mitu kihti, mis võib väga lihtsate päringute puhul tekitada minimaalset ülekulu. |
+| **Traditsiooniline Monoliit** | Kõik koos ühes suures koodihunnikus; alguses väga kiire ja lihtne üles seada. | Kood muutub kiiresti segaseks ("spagett-kood"); ühe koodivea tõttu võib kogu rakendus alla kukkuda. |
