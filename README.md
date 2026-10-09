@@ -107,3 +107,15 @@ Iga suurema stabiilse etapi valmimisel luuakse GitHubis ametlik väljalase (*Rel
 | :--- | :--- | :--- |
 | **Kihiline arhitektuur (Valitud)** | Selge komponentide eraldatus; ühte kihti (nt andmebaasi) saab muuta ilma esiosa lõhkumata; lihtne testida. | Andmed peavad läbima mitu kihti, mis võib väga lihtsate päringute puhul tekitada minimaalset ülekulu. |
 | **Traditsiooniline Monoliit** | Kõik koos ühes suures koodihunnikus; alguses väga kiire ja lihtne üles seada. | Kood muutub kiiresti segaseks ("spagett-kood"); ühe koodivea tõttu võib kogu rakendus alla kukkuda. |
+
+
+### Projekti arhitektuursete ja protsessivalikute kokkuvõte
+
+| Projekti osa | Sinu valik | Peamine alternatiiv | Miks valitud lahendus on parem? |
+| :--- | :--- | :--- | :--- |
+| **Arendusmudel** | Iteratiivne mudel | Koskmudel (Waterfall) | Lubab lennult muudatusi teha ja kiiresti töötava MVP versiooniga turule tulla. |
+| **Metoodika** | Scrum | Kanban | Selged 2-nädalased sprindid, fikseeritud fookus ja konkreetne eesmärk igaks perioodiks. |
+| **Arhitektuur** | Kihiline veebirakendus | Traditsiooniline Monoliit | Komponendid on eraldatud; esiosa (React) saab muuta ilma andmepääsu lõhkumata. |
+| **CASE-vahendid** | draw.io & PlantUML | Visual Paradigm | Tasuta, lihtsad kasutada ning reaalajas tekstipõhise koodiga muudetavad. |
+| **Versioonimine** | SemVer (MAJOR.MINOR.PATCH) | CalVer (Kalendripõhine) | Ülemaailmne standard, mis näitab versiooninumbri põhjal kohe ära lõhkuvad muudatused. |
+
