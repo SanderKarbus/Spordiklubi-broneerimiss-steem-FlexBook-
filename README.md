@@ -2,7 +2,7 @@
 
 Siin on spordiklubi treeningute broneerimissüsteemi FlexBook arendusprotsessi, metoodika ja arhitektuuri ülevaade.
 
-![FlexBook Arhitektuur](arhitektuur.drawio.png)
+![FlexBook Arhitektuur](arhitektuur.png)
 
 ---
 
