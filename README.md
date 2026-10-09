@@ -2,6 +2,8 @@
 
 Siin on spordiklubi treeningute broneerimissüsteemi FlexBook arendusprotsessi, metoodika ja arhitektuuri ülevaade.
 
+![FlexBook Arhitektuur](arhitektuur.drawio)
+
 ---
 
 ## 1. Tarkvara arendusprotsess
