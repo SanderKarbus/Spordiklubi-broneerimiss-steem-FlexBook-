@@ -80,6 +80,27 @@ FlexBook on disainitud **veebirakendusena**, mis põhineb **kihilisel arhitektuu
 
 ### Valitud arhitektuuri eelised ja puudused võrreldes Monoliidiga
 
+
+---
+
+## 5. Git ja versioonimine
+
+Projekti elutsükli ja lähtekoodi haldamiseks kasutatakse versioonihaldustööriista Git ja koodivaramut GitHub. Dokumentatsiooni ja tulevaste koodimuudatuste salvestamisel tehakse sisulisi commit'e (nt `feat: lisatud andmebaasi struktuur`, `fix: parandatud kalendri valideerimine`).
+
+### Versiooniplaan (SemVer: MAJOR.MINOR.PATCH)
+
+Rakenduse väljalaskmisel ja uuendamisel järgitakse rangelt semantilise versioonimise (Semantic Versioning) põhimõtteid, kus versiooninumber esitatakse kujul **MAJOR.MINOR.PATCH** (näiteks algversioon `1.0.0`).
+
+*   **PATCH (Veaparandus):** Muutub siis, kui tehakse tagasiühilduvaid pisivigu või turvaparandusi, mis ei muuda äpi toimimist.
+    *   *Näide:* Kui versioon on `2.4.1` ja parandatakse viga, kus broneerimisnupp teatud brauserites ei töötanud, on uus versioon **`2.4.2`**.
+*   **MINOR (Uus funktsionaalsus):** Muutub siis, kui lisatakse uus tagasiühilduv funktsioon (olemasolevad asjad ei lähe katki).
+    *   *Näide:* Kui versioon on `2.4.1` ja lisatakse funktsioon, et kasutaja saab profiilipilti üles laadida, on uus versioon **`2.5.0`**.
+*   **MAJOR (Suur muudatus / API lõhkumine):** Muutub siis, kui tehakse suuri, mitte-tagasiühilduvaid muudatusi, mis nõuavad süsteemi ümbertegemist või lõhuvad senise avaliku liidese (API).
+    *   *Näide:* Kui versioon on `2.4.1` ja kogu andmebaasi loogika või sisselogimissüsteem ehitatakse täielikult ümber (vanad kliendid ei saa enam otse ühendust), on uus versioon **`3.0.0`**.
+
+### Versiooninumbrite kasutamine väljalaskmisel
+Iga suurema stabiilse etapi valmimisel luuakse GitHubis ametlik väljalase (*Release* / *Tag*), mis fikseerib koodi oleku antud hetkel. See tagab, et arendusmeeskond ja klient teavad täpselt, milline versioon parajasti toodanguserveris (live-keskkonnas) jookseb.
+
 | Arhitektuur | Eelised | Puudused |
 | :--- | :--- | :--- |
 | **Kihiline arhitektuur (Valitud)** | Selge komponentide eraldatus; ühte kihti (nt andmebaasi) saab muuta ilma esiosa lõhkumata; lihtne testida. | Andmed peavad läbima mitu kihti, mis võib väga lihtsate päringute puhul tekitada minimaalset ülekulu. |
